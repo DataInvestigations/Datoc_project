@@ -1,3 +1,6 @@
 # Datoc_project
 
-Hello 
+* Insert Paragraph here 
+
+Weekly log 
+
