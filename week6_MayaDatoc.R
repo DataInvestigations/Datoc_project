@@ -23,15 +23,13 @@ filt <- bat_clean %>% filter(type == "BAT")
 ggplot(data=filt, aes(x = species, y = temp)) +
   geom_boxplot() + labs(title = "Temperature versus Species", x = "Bat Species", y = "Temperature (°C)")
 
+# Add an extra layer to make the color of the graph be grouped by season
+
+ggplot(data=filt, aes(x = species, y = temp, color = season)) +
+  geom_boxplot() + labs(title = "Temperature versus Species", x = "Bat Species", y = "Temperature (°C)")
+
+# Create a separate density plot in order to visualize temperatures of infected versus healthy bats
+ggplot(data = filt, aes(x = temp, fill = factor(gd))) + geom_density(alpha=0.5) + 
+  labs(title = "Density of Temperatures of Bats Based on gd") + scale_fill_manual(values = c("#B9CFF0", "#6DE8C3"),labels = c("0: Not infected", "1: Infected"))
 
 
-#g1=ggplot(data=batdat,aes(x=species,y=lgdL,color=site))+
-  #geom_point(size=2) #this adds points to graph
-#g1
-#a simple graph with species on x, and lgdL (loads) on Y, site is color
-
-#this is a little too simple, but ggplot2 allows us to buid
-
-#g1=ggplot(data=batdat,aes(x=species,y=lgdL,color=site))+
-  #geom_boxplot() #this add a boxplot to the graph
-#g1
