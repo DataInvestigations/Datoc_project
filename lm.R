@@ -13,13 +13,13 @@ ggplot(data=batdat,aes(x=species,y=temp))+
   geom_point(size=2)
 bat_clean <- batdat[complete.cases(batdat), ]
 
-
 fit <- lm(temp ~ species, data = bat_clean)
 summary(fit)
 plot(fit)
 hist(resid(fit))
 
 # Question 2
+check_model(fit)
 
 check_model(fit, check = "linearity")
 
