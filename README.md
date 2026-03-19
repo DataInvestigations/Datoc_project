@@ -11,3 +11,9 @@
 I was interested in how the temperature varies among the different species of US bats, so I made a boxplot to show the different quartiles.
 Similarly, I wanted to see if there was any difference between the temperatures of different species depending on the hibernation season. 
 To add on to that I was just interested in a different type of plot so I added that comparing healthy versus infected bats to see where the temperature would peak. 
+
+## Week 8 
+- Completed Linear Models assignment 
+  - created a univariate linear model of the hypothesis concerning the temperature variation among different species
+  - Checked the assumptions and explained which ones were violated 
+  - added a ggplot of the relationship
