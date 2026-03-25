@@ -2,6 +2,8 @@
 
 # Weekly log 
 
+#KL - remember to update with data management script here!
+
 ## Week 6
 - Completed ggplot assignment 
   - Added one visualization that was a boxplot of the relationship between temperature and species
