@@ -3,6 +3,7 @@
 # Weekly log 
 
 #KL - remember to update with data management script here!
+#Kl - can you include the names of the scripts in this file?
 
 ## Week 6
 - Completed ggplot assignment 
