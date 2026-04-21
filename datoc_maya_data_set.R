@@ -8,6 +8,9 @@ library(dplyr)
 #### Read in your data
 
 batdat = read.csv("C:/Users/myagl/Downloads/international_bat_temps.csv")
+#use relative directory
+batdat = read.csv("international_bat_temps.csv")
+
 # The function read.csv() reads in your .csv file containing all your data
 # The green text within the " " marks indicates where your file is (its directory),
 # which you will need to specify. 
@@ -123,7 +126,8 @@ batcount
 
 batdat_count = left_join(
   x = batdat,
-  y = batcount,
+    y = batcount,
+  #KL - this doesn't work for me because date isn't in the batcount data
   by = c("site","species","date")
 )
 
