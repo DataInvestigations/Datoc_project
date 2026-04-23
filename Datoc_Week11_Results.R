@@ -38,7 +38,7 @@ head(bat_new$yhat)
 plot1 <- ggplot(bat_order,aes(x= cluster_size,y= temp,color=species))+
   geom_point(size=2,shape =1) + 
   geom_line(data = newdat, aes(x = cluster_size, y=yhat, group = species)) + 
-  labs(title = "Relationship between Cluster Size and Temp by Species")
+  labs(title = "Relationship between Cluster Size and Temp by Species", x = "cluster size", y = "temp (Celsius)")
 plot1
 #it would be better to log cluster size so you can see this relationship
 
