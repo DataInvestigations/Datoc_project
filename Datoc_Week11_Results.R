@@ -33,13 +33,22 @@ newdat$yhat = predict(g1,newdata = newdat, type="response")
 #bat_new$yhat = predict(g1,bat_order, type="response")
 head(bat_new$yhat)
 
-
+library(rcartocolor)
 #geom_line(data=batdat, aes(x=cluster_size,y=temp,col = species))
 plot1 <- ggplot(bat_order,aes(x= cluster_size,y= temp,color=species))+
   geom_point(size=2,shape =1) + 
-  geom_line(data = newdat, aes(x = cluster_size, y=yhat, group = species)) + 
-  labs(title = "Relationship between Cluster Size and Temp by Species", x = "cluster size", y = "temp (Celsius)")
-plot1
+  geom_line(data = newdat, aes(x = cluster_size, y=yhat, group = species), linewidth = 1.0) + 
+  labs(title = "Relationship between Cluster Size and Temp by Species", x = "cluster size", y = "temp (Celsius)") + scale_color_manual(values = c("#222138", "#5C5382", "#91779D", "#C7A2B2", "#F2D1D3"))
+
+
+plot1 
+# library(knitr)
+# library(kableExtra)
+# k1 <- exp(confint.default(g1)[1:2,])
+# k2 <- exp(confint.default(g1)[7:10,])
+# kable(k1)
+# kable(k2)
+
 #it would be better to log cluster size so you can see this relationship
 
 # The generalized linear model appears to display that there is a prominent effect of cluster size on temperature according to species. 
