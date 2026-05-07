@@ -17,6 +17,7 @@ bat_new = bat_new %>%
 
 g1 <- glm(temp ~ log(cluster_size + 1) * species, data = bat_new, family = gaussian, na.action = na.exclude)
 summary(g1) 
+confint(g1)
 #IRL, better to not call family gaussian for a glm but i didn't tell you that so okay
 
 
