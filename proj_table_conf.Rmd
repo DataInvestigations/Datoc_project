@@ -1,0 +1,37 @@
+---
+title: "bat_tab"
+output: pdf_document
+date: "2026-04-28"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+library(ggplot2)
+
+batdat <- read.csv("us_bat_temps.csv")
+bat_new <- na.omit(batdat)
+#View(batdat)
+
+library(tidyverse)
+bat_new = bat_new %>%
+  drop_na(cluster_size)%>%
+  drop_na(species)%>%
+  drop_na(temp) %>%
+  filter(species!="LANO")%>% #clean to remove these!!!
+  filter(species!="MYAU" )%>%
+  filter(species!="SUBSTRATE") %>%
+  filter(species!="MYLE") 
+
+g1 <- glm(temp ~ cluster_size * species, data = bat_new, family = gaussian, na.action = na.exclude)
+summary(g1) 
+library(knitr)
+
+#k1 <- exp(confint.default(g1)[1:2,])
+k2 <- exp(confint.default(g1)[c(1:2, 7:10),])
+#kable(k1)
+kable(k2)
+```

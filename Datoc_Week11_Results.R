@@ -15,7 +15,7 @@ bat_new = bat_new %>%
   filter(species!="SUBSTRATE") %>%
   filter(species!="MYLE") 
 
-g1 <- glm(temp ~ cluster_size * species, data = bat_new, family = gaussian, na.action = na.exclude)
+g1 <- glm(temp ~ log(cluster_size + 1) * species, data = bat_new, family = gaussian, na.action = na.exclude)
 summary(g1) 
 #IRL, better to not call family gaussian for a glm but i didn't tell you that so okay
 
@@ -31,12 +31,12 @@ newdat = with(bat_new,
 #hmm doesn't like that because some species are NA - should just remove those
 newdat$yhat = predict(g1,newdata = newdat, type="response")
 #bat_new$yhat = predict(g1,bat_order, type="response")
-head(bat_new$yhat)
+head(newdat$yhat)
 
 library(rcartocolor)
 #geom_line(data=batdat, aes(x=cluster_size,y=temp,col = species))
 plot1 <- ggplot(bat_order,aes(x= cluster_size,y= temp,color=species))+
-  geom_point(size=2,shape =1) + 
+  geom_point(size=2,shape =1, alpha =0.4) + scale_x_continuous(trans = "log1p") +
   geom_line(data = newdat, aes(x = cluster_size, y=yhat, group = species), linewidth = 1.0) + 
   labs(title = "Relationship between Cluster Size and Temp by Species", x = "cluster size", y = "temp (Celsius)") + scale_color_manual(values = c("#222138", "#5C5382", "#91779D", "#C7A2B2", "#F2D1D3"))
 
